@@ -151,8 +151,6 @@ public class TaxiWidget extends AppWidgetProvider {
             remoteViews.setViewVisibility(R.id.refresh_view, View.VISIBLE);
             remoteViews.setViewVisibility(R.id.drive_view, View.INVISIBLE);
 
-            //remoteViews.setTextViewText(R.id.traffic_info_view, context.getString(R.string.tap_refresh_text) );
-
             appWidgetManager.updateAppWidget(thisWidget, remoteViews);
         }
     }
