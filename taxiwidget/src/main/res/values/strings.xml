@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Sygic Widget</string>
+    <string name="main_text">\@ Home in</string>
+    <string name="drive_text">Drive!</string>
+    <string name="refresh_text">Refresh</string>
+    <string name="loading_text">Loading</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="widget_background">#FF0000</color>
+    <color name="traffic_background">#363636</color>
+    <color name="run_background">#0f0f0f</color>
+    <color name="main_background">#1b1b1b</color>
+    <color name="arrow_color">#E99900</color>
+
+</resources>
