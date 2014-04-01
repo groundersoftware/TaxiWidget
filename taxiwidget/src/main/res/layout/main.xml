@@ -5,6 +5,7 @@
     android:orientation="horizontal"
     android:background="@drawable/background_drawable">
     <LinearLayout
+        android:id="@+id/refresh_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -12,61 +13,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:src="@drawable/home"/>
-
             <TextView
                 android:id="@+id/home_view"
-                android:text="@string/main_text"
+                android:text="Fun Taxi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:gravity="top"
                 android:textColor="@android:color/white"
-                android:textSize="8pt"
+                android:textSize="14pt"
                 android:textStyle="bold"/>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/traffic_info_view"
+            android:text="0904990110"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:gravity="bottom"
-            android:textColor="@android:color/white"
-            android:textSize="12pt"
+            android:layout_marginLeft="0dp"
+            android:gravity="top"
+            android:textColor="@color/number_color"
+            android:textSize="8pt"
             android:textStyle="bold"/>
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/refresh_view"
-        android:layout_width="50dp"
+        android:id="@+id/call_view"
+        android:layout_width="60dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:drawableTop="@drawable/refresh"
         android:gravity="center"
-        android:text="@string/refresh_text"
+        android:text="@string/call_text"
         android:textColor="@android:color/white"
         android:textSize="6pt"
         android:textStyle="bold"/>
-
-
-    <TextView
-        android:id="@+id/drive_view"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:drawableTop="@drawable/arrow"
-        android:gravity="center"
-        android:text="@string/drive_text"
-        android:textColor="@color/arrow_color"
-        android:textSize="6pt"
-        android:textStyle="bold"
-        android:visibility="invisible"/>
 
     <ImageView
         android:layout_width="1dp"
@@ -76,6 +59,6 @@
         android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_toLeftOf="@id/refresh_view"/>
+        android:layout_toLeftOf="@id/call_view"/>
 
 </RelativeLayout>

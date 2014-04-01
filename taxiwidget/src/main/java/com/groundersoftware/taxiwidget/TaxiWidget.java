@@ -22,7 +22,7 @@ import com.groundersoftware.taxiwidget.locationservice.LocationService;
 public class TaxiWidget extends AppWidgetProvider {
 
     private static final String ACTION_REFRESH = "com.groundersoftware.taxiwidget.taxiwidget.REFRESH_ACTION";
-    private static final String ACTION_NAVI = "com.groundersoftware.taxiwidget.taxiwidget.NAVI_ACTION";
+    private static final String ACTION_CALL = "com.groundersoftware.taxiwidget.taxiwidget.CALL_ACTION";
 
     private static LocationService mLocationService;
     private static Timer mUpdateTimer;
@@ -78,28 +78,20 @@ public class TaxiWidget extends AppWidgetProvider {
             Intent refresh = new Intent(context, TaxiWidget.class);
             refresh.setAction(ACTION_REFRESH);
             refresh.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            PendingIntent actionRefreshPendingIntent = PendingIntent.getBroadcast(context, 0, refresh,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent actionRefreshPendingIntent = PendingIntent.getBroadcast(context, 0, refresh, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            Intent navi = new Intent(context, TaxiWidget.class);
-            navi.setAction(ACTION_NAVI);
-            navi.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            PendingIntent actionNaviPendingIntent = PendingIntent.getBroadcast(context, 0, navi,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+            Intent call = new Intent(context, TaxiWidget.class);
+            call.setAction(ACTION_CALL);
+            call.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+            PendingIntent actionCallPendingIntent = PendingIntent.getBroadcast(context, 0, call, PendingIntent.FLAG_UPDATE_CURRENT);
 
             // Get the layout for the App Widget and attach an on-click listener
             // to the button
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.main);
             if ( !bLockScreen ) {
-                views.setOnClickPendingIntent(R.id.drive_view, actionNaviPendingIntent);
+                views.setOnClickPendingIntent(R.id.call_view, actionCallPendingIntent);
                 views.setOnClickPendingIntent(R.id.refresh_view, actionRefreshPendingIntent);
             }
-
-            views.setViewVisibility(R.id.refresh_view, View.VISIBLE);
-            views.setViewVisibility(R.id.drive_view, View.INVISIBLE);
-
-            //views.setTextViewText(R.id.traffic_info_view, TextUtils.concat(FormatHelper.formatNumber(0, "h"), FormatHelper.formatNumber(0, "min")));
-            //views.setTextViewText(R.id.traffic_info_view, FormatHelper.formatTime(3600));
 
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -116,20 +108,11 @@ public class TaxiWidget extends AppWidgetProvider {
             for (int appWidgetId : appWidgetIds) {
                 RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.main);
 
-                //after successful traffic refresh ---> hide refresh and show drive view
-                remoteViews.setViewVisibility(R.id.refresh_view, View.INVISIBLE);
-                remoteViews.setViewVisibility(R.id.drive_view, View.VISIBLE);
-
-                //String strTime = "<b>2h</b> <small>15min</small> + 10min";
-                //remoteViews.setTextViewText(R.id.traffic_info_view, Html.fromHtml(strTime) );
-                //Toast.makeText(context, strTime, Toast.LENGTH_SHORT).show();
-                remoteViews.setTextViewText(R.id.traffic_info_view, context.getString(R.string.loading_text) );
+//                remoteViews.setTextViewText(R.id.traffic_info_view, context.getString(R.string.loading_text) );
 
                 appWidgetManager.updateAppWidget(thisWidget, remoteViews);
             }
-
-
-        } else if (intent.getAction().equals(ACTION_NAVI)) {
+        } else if (intent.getAction().equals(ACTION_CALL)) {
             // nothing for now
         } else {
             super.onReceive(context, intent);
@@ -148,8 +131,8 @@ public class TaxiWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.main);
 
-            remoteViews.setViewVisibility(R.id.refresh_view, View.VISIBLE);
-            remoteViews.setViewVisibility(R.id.drive_view, View.INVISIBLE);
+  //          remoteViews.setViewVisibility(R.id.refresh_view, View.VISIBLE);
+  //          remoteViews.setViewVisibility(R.id.drive_view, View.INVISIBLE);
 
             appWidgetManager.updateAppWidget(thisWidget, remoteViews);
         }
